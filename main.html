@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fogo Loyalty Certificate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            .certificate-content {
+            z-index: 1;
+            }
+        }
+        .certificate {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #0f172a;
+        }
+        .certificate {
+        width: 100%;
+        max-width: 900px;       
+        min-height: 600px;     
+        padding: 3rem;         
+        margin: 2rem auto;    
+        }
+        .certificate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #0f172a 0%, #334155 100%);
+            z-index: 0;
+        }
+        .certificate-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        #certificateName {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #0f172a, #334155);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+}
+        .seal {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            width: 100px;
+            height: 100px;
+            opacity: 0.5;
+        }
+        .hidden {
+            display: none;
+        }
+        .btn-primary {
+            background-color: #0f172a;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #1e293b;
+        }
+        .border-fogo {
+            border-color: #0f172a;
+        }
+        .text-fogo {
+            color: #0f172a;
+        }
+        .bg-fogo {
+            background-color: #0f172a;
+        }
+        .bg-fogo-light {
+            background-color: #f8fafc;
+        }
+        .fogo-logo {
+            color: #030b22;
+            width: 148px;
+            height: 48px;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="w-full" style="max-width: 1000px;">  
+        <!-- Pledge Form -->
+        <div id="pledgeForm" class="bg-white rounded-lg shadow-lg p-8 mb-8 no-print">
+            <div class="flex justify-center mb-6">
+            </div>
+            
+            
+            <div class="mb-6">
+                <label for="name" class="block text-gray-700 font-semibold mb-2">Your Name</label>
+                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500" placeholder="Enter your full name">
+            </div>
+            
+            <div class="mb-8">
+                <label class="block text-gray-700 font-semibold mb-2">Loyalty Pledge</label>
+                <div class="bg-slate-50 border border-slate-200 rounded-md p-4 text-slate-800 font-medium">
+                    "Gfogo, I pledge loyal to fogo"
+                </div>
+            </div>
+            
+            <button id="submitPledge" class="w-full bg-fogo hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-md transition duration-300 flex items-center justify-center">
+                <span>Submit Pledge</span>
+                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+        <div id="certificateContainer" class="hidden">
+            <div class="certificate relative rounded-lg p-10 shadow-2xl mb-8 overflow-hidden">
+                <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('demo.jpg');">
+                </div>
+        <div class="certificate-content">
+    <div class="text-center">
+        <p id="certificateName" class="text-3xl font-bold">Name Here</p>
+    </div>
+</div>
+                <div class="seal">
+                </div>
+            </div>
+            
+            <div class="flex justify-center space-x-4 no-print">
+                <button id="printCertificate" class="bg-fogo hover:bg-slate-800 text-white font-bold py-2 px-6 rounded-md transition duration-300 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clip-rule="evenodd" />
+                    </svg>
+                    Print Certificate
+                </button>
+                <button id="newPledge" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-6 rounded-md transition duration-300">
+                    Create New
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pledgeForm = document.getElementById('pledgeForm');
+            const certificateContainer = document.getElementById('certificateContainer');
+            const submitPledgeBtn = document.getElementById('submitPledge');
+            const printCertificateBtn = document.getElementById('printCertificate');
+            const newPledgeBtn = document.getElementById('newPledge');
+            const nameInput = document.getElementById('name');
+            const certificateName = document.getElementById('certificateName');
+            const certDate = document.getElementById('certDate');
+            
+            // Format current date
+            const formatDate = () => {
+                const now = new Date();
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return now.toLocaleDateString('en-US', options);
+            };
+            
+            // Submit pledge and show certificate
+            submitPledgeBtn.addEventListener('click', function() {
+                const name = nameInput.value.trim();
+                if (!name) {
+                    alert('Please enter your name');
+                    return;
+                }
+                
+                // Chỉ cập nhật tên, không cập nhật ngày tháng nữa
+                certificateName.textContent = name;
+                
+                // Show certificate, hide form
+                pledgeForm.classList.add('hidden');
+                certificateContainer.classList.remove('hidden');
+            });
+            
+            // Print certificate
+            printCertificateBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            // Create new certificate
+            newPledgeBtn.addEventListener('click', function() {
+                nameInput.value = '';
+                pledgeForm.classList.remove('hidden');
+                certificateContainer.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
