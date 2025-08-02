@@ -40,18 +40,10 @@
             z-index: 0;
         }
         .certificate-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-            padding: 2rem;
-        }
+    position: relative;
+    z-index: 10; /* tăng z-index để đảm bảo nằm trên ảnh nền */
+    text-align: center;
+}
 
         #certificateName {
             font-size: 1.8rem;
@@ -136,7 +128,9 @@
                 </div>
         <div class="certificate-content">
     <div class="text-center">
-        <p id="certificateName" class="text-3xl font-bold">Name Here</p>
+        <p id="certificateName" class="text-3xl font-extrabold text-gray-900 bg-white bg-opacity-80 px-4 py-2 rounded">
+    Name Here
+</p>
     </div>
 </div>
                 <div class="seal">
@@ -221,5 +215,6 @@ downloadImageBtn.addEventListener('click', function () {
 </body>
 
 </html>
+
 
 
