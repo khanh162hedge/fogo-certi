@@ -151,6 +151,9 @@
                     Print Certificate
                 </button>
                 <button id="newPledge" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-6 rounded-md transition duration-300">
+                    Download as Image
+                </button>
+                <button id="newPledge" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-6 rounded-md transition duration-300">
                     Create New
                 </button>
             </div>
@@ -195,7 +198,16 @@
             printCertificateBtn.addEventListener('click', function() {
                 window.print();
             });
-            
+            // Download certificate as image
+        downloadImageBtn.addEventListener('click', function() {
+            const cert = document.querySelector('.certificate');
+            html2canvas(cert).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'certificate.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        });
             // Create new certificate
             newPledgeBtn.addEventListener('click', function() {
                 nameInput.value = '';
@@ -207,3 +219,4 @@
 </body>
 
 </html>
+
